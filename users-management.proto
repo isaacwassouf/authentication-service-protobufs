@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "./protos";
+
+package protos;
+
+// The greeting service definition.
+service UserManager {
+  // Sends a greeting
+  rpc RegisterUser (RegisterRequest) returns (RegisterResponse) {}
+}
+
+// The request message containing the user's name.
+message RegisterRequest{
+  string username = 1;
+  string password = 2;
+}
+
+// The response message containing the greetings
+message RegisterResponse{
+  string message = 1;
+}
