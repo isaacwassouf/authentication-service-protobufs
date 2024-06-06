@@ -33,3 +33,11 @@ message LoginResponse{
   string message = 1;
   string token = 2;
 }
+
+message VerifyEmailRequest{
+  string token = 1;
+}
+
+message VerifyEmailResponse{
+  string message = 1;
+}
