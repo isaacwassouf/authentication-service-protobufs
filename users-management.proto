@@ -9,6 +9,7 @@ service UserManager {
   // Sends a greeting
   rpc RegisterUser (RegisterRequest) returns (RegisterResponse) {}
   rpc LoginUser (LoginRequest) returns (LoginResponse) {}
+  rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
 }
 
 // The request message containing the user's name.
