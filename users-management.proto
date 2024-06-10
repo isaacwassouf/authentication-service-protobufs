@@ -10,6 +10,9 @@ service UserManager {
   rpc RegisterUser (RegisterRequest) returns (RegisterResponse) {}
   rpc LoginUser (LoginRequest) returns (LoginResponse) {}
   rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
+  rpc SetAuthProviderCredentials (SetAuthProviderCredentialsRequest) returns (SetAuthProviderCredentialsResponse) {}
+  rpc EnableAuthProvider (EnableAuthProviderRequest) returns (EnableAuthProviderResponse) {}
+  rpc DisableAuthProvider (DisableAuthProviderRequest) returns (DisableAuthProviderResponse) {}
 }
 
 // The request message containing the user's name.
@@ -42,3 +45,30 @@ message VerifyEmailRequest{
 message VerifyEmailResponse{
   string message = 1;
 }
+
+message SetAuthProviderCredentialsRequest{
+  uint64 auth_provider_id = 1;
+  string client_id = 2;
+  string client_secret = 3;
+}
+
+message SetAuthProviderCredentialsResponse{
+  string message = 1;
+}
+
+message EnableAuthProviderRequest{
+  uint64 auth_provider_id = 1;
+}
+
+message EnableAuthProviderResponse{
+  string message = 1;
+}
+
+message DisableAuthProviderRequest{
+  uint64 auth_provider_id = 1;
+}
+
+message DisableAuthProviderResponse{
+  string message = 1;
+}
+
