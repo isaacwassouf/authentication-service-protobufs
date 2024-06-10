@@ -4,6 +4,8 @@ option go_package = "./users-management-service";
 
 package protos;
 
+import "google/protobuf/empty.proto";
+
 // The greeting service definition.
 service UserManager {
   // Sends a greeting
@@ -13,6 +15,7 @@ service UserManager {
   rpc SetAuthProviderCredentials (SetAuthProviderCredentialsRequest) returns (SetAuthProviderCredentialsResponse) {}
   rpc EnableAuthProvider (EnableAuthProviderRequest) returns (EnableAuthProviderResponse) {}
   rpc DisableAuthProvider (DisableAuthProviderRequest) returns (DisableAuthProviderResponse) {}
+  rpc GetGoogleAuthorizationUrl (google.protobuf.Empty) returns (GoogleAuthorizationUrlResponse) {}
 }
 
 // The request message containing the user's name.
@@ -65,10 +68,15 @@ message EnableAuthProviderResponse{
 }
 
 message DisableAuthProviderRequest{
-  uint64 auth_provider_id = 1;
+  uint64 provider_id = 1;
 }
 
 message DisableAuthProviderResponse{
   string message = 1;
+}
+
+message GoogleAuthorizationUrlResponse{
+  string url = 1;
+  string state = 2;
 }
 
