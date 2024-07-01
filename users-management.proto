@@ -17,6 +17,7 @@ service UserManager {
   rpc DisableAuthProvider (DisableAuthProviderRequest) returns (DisableAuthProviderResponse) {}
   rpc GetGoogleAuthorizationUrl (google.protobuf.Empty) returns (GoogleAuthorizationUrlResponse) {}
   rpc HandleGoogleLogin (GoogleLoginRequest) returns (GoogleLoginResponse) {}
+  rpc ListAuthProviders (google.protobuf.Empty) returns (ListAuthProvidersResponse) {}
 }
 
 // The request message containing the user's name.
@@ -91,3 +92,16 @@ message GoogleLoginResponse{
   string message = 1;
   string token = 2;
 }
+
+message AuthProvider{
+  uint64 id = 1;
+  string name = 2;
+  string client_id = 3;
+  bool active = 5;
+}
+
+message ListAuthProvidersResponse{
+  repeated AuthProvider auth_providers = 1;
+}
+
+
