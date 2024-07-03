@@ -18,6 +18,7 @@ service UserManager {
   rpc GetGoogleAuthorizationUrl (google.protobuf.Empty) returns (GoogleAuthorizationUrlResponse) {}
   rpc HandleGoogleLogin (GoogleLoginRequest) returns (GoogleLoginResponse) {}
   rpc ListAuthProviders (google.protobuf.Empty) returns (ListAuthProvidersResponse) {}
+  rpc RegisterAdmin(RegisterAdminRequest) returns (RegisterAdminResponse) {}
 }
 
 // The request message containing the user's name.
@@ -104,4 +105,13 @@ message ListAuthProvidersResponse{
   repeated AuthProvider auth_providers = 1;
 }
 
+message RegisterAdminRequest{
+  string email = 1;
+  string password = 2;
+  string password_confirmation = 3;
+}
+
+message RegisterAdminResponse{
+  string message = 1;
+}
 
