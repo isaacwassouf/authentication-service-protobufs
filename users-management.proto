@@ -19,6 +19,7 @@ service UserManager {
   rpc HandleGoogleLogin (GoogleLoginRequest) returns (GoogleLoginResponse) {}
   rpc ListAuthProviders (google.protobuf.Empty) returns (ListAuthProvidersResponse) {}
   rpc RegisterAdmin(RegisterAdminRequest) returns (RegisterAdminResponse) {}
+  rpc LoginAdmin(LoginRequest) returns (LoginResponse) {}
 }
 
 // The request message containing the user's name.
