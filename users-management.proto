@@ -20,6 +20,7 @@ service UserManager {
   rpc ListAuthProviders (google.protobuf.Empty) returns (ListAuthProvidersResponse) {}
   rpc RegisterAdmin(RegisterAdminRequest) returns (RegisterAdminResponse) {}
   rpc LoginAdmin(LoginRequest) returns (LoginResponse) {}
+  rpc ListUsers(google.protobuf.Empty) returns (stream User) {}
 }
 
 // The request message containing the user's name.
@@ -114,5 +115,15 @@ message RegisterAdminRequest{
 
 message RegisterAdminResponse{
   string message = 1;
+}
+
+message User{
+  uint64 id = 1;
+  string name = 2;
+  string email = 3;
+  bool is_verified = 4;
+  string auth_provider = 5;
+  string created_at = 6;
+  string updated_at = 7;
 }
 
