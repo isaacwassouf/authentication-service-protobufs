@@ -6,9 +6,7 @@ package protos;
 
 import "google/protobuf/empty.proto";
 
-// The greeting service definition.
 service UserManager {
-  // Sends a greeting
   rpc RegisterUser (RegisterRequest) returns (RegisterResponse) {}
   rpc LoginUser (LoginRequest) returns (LoginResponse) {}
   rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
@@ -21,6 +19,7 @@ service UserManager {
   rpc RegisterAdmin(RegisterAdminRequest) returns (RegisterAdminResponse) {}
   rpc LoginAdmin(LoginRequest) returns (LoginResponse) {}
   rpc ListUsers(google.protobuf.Empty) returns (stream User) {}
+  rpc GetGitHubAuthorizationUrl(google.protobuf.Empty) returns (GitHubAuthorizationUrlResponse) {}
 }
 
 // The request message containing the user's name.
@@ -127,3 +126,7 @@ message User{
   string updated_at = 7;
 }
 
+message GitHubAuthorizationUrlResponse {
+  string url = 1;
+  string state = 2;
+}
