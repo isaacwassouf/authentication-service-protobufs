@@ -20,6 +20,7 @@ service UserManager {
   rpc LoginAdmin(LoginRequest) returns (LoginResponse) {}
   rpc ListUsers(google.protobuf.Empty) returns (stream User) {}
   rpc GetGitHubAuthorizationUrl(google.protobuf.Empty) returns (GitHubAuthorizationUrlResponse) {}
+  rpc HandleGitHubLogin(GitHubLoginRequest) returns (GitHubLoginResponse) {}
 }
 
 // The request message containing the user's name.
@@ -129,4 +130,15 @@ message User{
 message GitHubAuthorizationUrlResponse {
   string url = 1;
   string state = 2;
+}
+
+message GitHubLoginRequest {
+  string name = 1;
+  string email = 2;
+  string identifier = 3;
+}
+
+message GitHubLoginResponse {
+  string message = 1;
+  string token = 2;
 }
