@@ -11,6 +11,7 @@ service UserManager {
   rpc LoginUser (LoginRequest) returns (LoginResponse) {}
   rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
   rpc SetAuthProviderCredentials (SetAuthProviderCredentialsRequest) returns (SetAuthProviderCredentialsResponse) {}
+  rpc GetAuthProviderCredentials (GetAuthProviderCredentialsRequest) returns (GetAuthProviderCredentialsResponse) {}
   rpc EnableAuthProvider (EnableAuthProviderRequest) returns (EnableAuthProviderResponse) {}
   rpc DisableAuthProvider (DisableAuthProviderRequest) returns (DisableAuthProviderResponse) {}
   rpc GetGoogleAuthorizationUrl (google.protobuf.Empty) returns (GoogleAuthorizationUrlResponse) {}
@@ -21,6 +22,11 @@ service UserManager {
   rpc ListUsers(google.protobuf.Empty) returns (stream User) {}
   rpc GetGitHubAuthorizationUrl(google.protobuf.Empty) returns (GitHubAuthorizationUrlResponse) {}
   rpc HandleGitHubLogin(GitHubLoginRequest) returns (GitHubLoginResponse) {}
+}
+
+enum AuthProviderName {
+  GOOGLE = 0;
+  GITHUB = 1;
 }
 
 // The request message containing the user's name.
@@ -142,3 +148,13 @@ message GitHubLoginResponse {
   string message = 1;
   string token = 2;
 }
+
+message GetAuthProviderCredentialsRequest {
+  AuthProviderName auth_provider = 1;
+}
+
+message GetAuthProviderCredentialsResponse {
+  string client_id = 1;
+  string client_secret = 2;
+}
+
