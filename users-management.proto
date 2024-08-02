@@ -23,6 +23,7 @@ service UserManager {
   rpc GetGitHubAuthorizationUrl(google.protobuf.Empty) returns (GitHubAuthorizationUrlResponse) {}
   rpc HandleGitHubLogin(GitHubLoginRequest) returns (GitHubLoginResponse) {}
   rpc RequestPasswordReset(RequestPasswordResetRequest) returns (RequestPasswordResetResponse) {}
+  rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (ConfirmPasswordResetResponse) {}
 }
 
 enum AuthProviderName {
@@ -167,3 +168,12 @@ message RequestPasswordResetResponse {
   string message = 1;
 }
 
+message ConfirmPasswordResetRequest {
+  string code = 1;
+  string password = 2;
+  string password_confirmation = 3;
+}
+
+message ConfirmPasswordResetResponse {
+  string message = 1;
+}
