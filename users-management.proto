@@ -24,6 +24,7 @@ service UserManager {
   rpc HandleGitHubLogin(GitHubLoginRequest) returns (GitHubLoginResponse) {}
   rpc RequestPasswordReset(RequestPasswordResetRequest) returns (RequestPasswordResetResponse) {}
   rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (ConfirmPasswordResetResponse) {}
+  rpc RequestEmailVerification(RequestEmailVerificationRequest) returns (RequestEmailVerificationResponse) {}
 }
 
 enum AuthProviderName {
@@ -175,5 +176,13 @@ message ConfirmPasswordResetRequest {
 }
 
 message ConfirmPasswordResetResponse {
+  string message = 1;
+}
+
+message RequestEmailVerificationRequest {
+  string email = 1;
+}
+
+message RequestEmailVerificationResponse {
   string message = 1;
 }
