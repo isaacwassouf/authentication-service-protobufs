@@ -22,6 +22,7 @@ service UserManager {
   rpc ListUsers(google.protobuf.Empty) returns (stream User) {}
   rpc GetGitHubAuthorizationUrl(google.protobuf.Empty) returns (GitHubAuthorizationUrlResponse) {}
   rpc HandleGitHubLogin(GitHubLoginRequest) returns (GitHubLoginResponse) {}
+  rpc RequestPasswordReset(RequestPasswordResetRequest) returns (RequestPasswordResetResponse) {}
 }
 
 enum AuthProviderName {
@@ -156,5 +157,13 @@ message GetAuthProviderCredentialsRequest {
 message GetAuthProviderCredentialsResponse {
   string client_id = 1;
   string client_secret = 2;
+}
+
+message RequestPasswordResetRequest {
+  string email = 1;
+}
+
+message RequestPasswordResetResponse {
+  string message = 1;
 }
 
