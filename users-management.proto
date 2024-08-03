@@ -25,6 +25,7 @@ service UserManager {
   rpc RequestPasswordReset(RequestPasswordResetRequest) returns (RequestPasswordResetResponse) {}
   rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (ConfirmPasswordResetResponse) {}
   rpc RequestEmailVerification(RequestEmailVerificationRequest) returns (RequestEmailVerificationResponse) {}
+  rpc ConfirmMFA(ConfirmMFARequest) returns (ConfirmMFAResponse) {}
 }
 
 enum AuthProviderName {
@@ -184,5 +185,14 @@ message RequestEmailVerificationRequest {
 }
 
 message RequestEmailVerificationResponse {
+  string message = 1;
+}
+
+message ConfirmMFARequest {
+  string email = 1;
+  string code = 2;
+}
+
+message ConfirmMFAResponse {
   string message = 1;
 }
