@@ -189,8 +189,7 @@ message RequestEmailVerificationResponse {
 }
 
 message ConfirmMFARequest {
-  string email = 1;
-  string code = 2;
+  string code = 1;
 }
 
 message ConfirmMFAResponse {
