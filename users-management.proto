@@ -194,5 +194,5 @@ message ConfirmMFARequest {
 }
 
 message ConfirmMFAResponse {
-  string message = 1;
+  string token = 1;
 }
