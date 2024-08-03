@@ -26,6 +26,7 @@ service UserManager {
   rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (ConfirmPasswordResetResponse) {}
   rpc RequestEmailVerification(RequestEmailVerificationRequest) returns (RequestEmailVerificationResponse) {}
   rpc ConfirmMFA(ConfirmMFARequest) returns (ConfirmMFAResponse) {}
+  rpc ToggleMFA(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 enum AuthProviderName {
