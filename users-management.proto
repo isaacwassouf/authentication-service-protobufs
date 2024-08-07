@@ -69,6 +69,7 @@ message SetAuthProviderCredentialsRequest{
   uint64 auth_provider_id = 1;
   string client_id = 2;
   string client_secret = 3;
+  string redirect_uri = 4;
 }
 
 message SetAuthProviderCredentialsResponse{
@@ -112,6 +113,7 @@ message AuthProvider{
   string name = 2;
   string client_id = 3;
   bool active = 5;
+  string redirect_uri = 6;
 }
 
 message ListAuthProvidersResponse{
@@ -161,6 +163,7 @@ message GetAuthProviderCredentialsRequest {
 message GetAuthProviderCredentialsResponse {
   string client_id = 1;
   string client_secret = 2;
+  string redirect_uri = 3;
 }
 
 message RequestPasswordResetRequest {
