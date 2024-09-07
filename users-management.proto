@@ -42,7 +42,7 @@ message VerifyTokenRevoationRequest {
 }
 
 message VerifyTokenRevoationResponse {
-  bool status = 1;
+  bool is_revoked = 1;
 }
 
 enum AuthProviderName {
