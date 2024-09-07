@@ -9,7 +9,9 @@ import "google/protobuf/empty.proto";
 service UserManager {
   rpc RegisterUser (RegisterRequest) returns (RegisterResponse) {}
   rpc LoginUser (LoginRequest) returns (LoginResponse) {}
+  rpc LogoutUser (LogoutRequest) returns (google.protobuf.Empty) {}
   rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
+  rpc VerifyTokenRevoation (VerifyTokenRevoationRequest) returns (VerifyTokenRevoationResponse) {}
   rpc SetAuthProviderCredentials (SetAuthProviderCredentialsRequest) returns (SetAuthProviderCredentialsResponse) {}
   rpc GetAuthProviderCredentials (GetAuthProviderCredentialsRequest) returns (GetAuthProviderCredentialsResponse) {}
   rpc EnableAuthProvider (EnableAuthProviderRequest) returns (EnableAuthProviderResponse) {}
@@ -27,6 +29,19 @@ service UserManager {
   rpc RequestEmailVerification(RequestEmailVerificationRequest) returns (RequestEmailVerificationResponse) {}
   rpc ConfirmMFA(ConfirmMFARequest) returns (ConfirmMFAResponse) {}
   rpc ToggleMFA(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message LogoutRequest {
+  uint64 user_id = 1;
+  string jti = 2;
+}
+
+message VerifyTokenRevoationRequest {
+  string jti = 1;
+}
+
+message VerifyTokenRevoationResponse {
+  bool status = 1;
 }
 
 enum AuthProviderName {
