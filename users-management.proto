@@ -38,6 +38,7 @@ message LogoutRequest {
 
 message VerifyTokenRevoationRequest {
   string jti = 1;
+  uint64 user_id = 2;
 }
 
 message VerifyTokenRevoationResponse {
