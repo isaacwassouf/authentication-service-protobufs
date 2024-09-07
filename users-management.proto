@@ -28,6 +28,7 @@ service UserManager {
   rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (ConfirmPasswordResetResponse) {}
   rpc RequestEmailVerification(RequestEmailVerificationRequest) returns (RequestEmailVerificationResponse) {}
   rpc ConfirmMFA(ConfirmMFARequest) returns (ConfirmMFAResponse) {}
+  rpc GetMFA(google.protobuf.Empty) returns (GetMFAResponse) {}
   rpc ToggleMFA(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
@@ -43,6 +44,10 @@ message VerifyTokenRevoationRequest {
 
 message VerifyTokenRevoationResponse {
   bool is_revoked = 1;
+}
+
+message GetMFAResponse {
+  bool enabled = 1;
 }
 
 enum AuthProviderName {
